@@ -4,7 +4,7 @@ const XPButtonCooldowns = [10,30,60,120,300,600,1200,2400,3600,5400,7200,14400,2
 const XPButtonColors = ["#00ffff","#0080ff","#0000ff","#8000ff","#ff00ff","#ff0080","#ff0000","#ff8000","#ffff00","#80ff00","#00ff00","#00ff80"];
 
 const chestButtonUnlockLevels = [0,3,5,10,20,50,100,200,300,500,750,1000,1500,2000,2500,3000,4000,5000,7500,10000,Infinity];
-const chestButtonCooldowns = [300, 600, 900, 1200, 1800, 2700, 3600, 5400, 5400, 5400, 5400, 5400, 5400, 5400, 5400, 5400, 5400, 5400, 5400, 5400];
+const chestButtonCooldowns = [300, 600, 900, 1200, 1800, 2700, 3600, 5400, 7200, 10800, 14400, 18000, 21600, 28800, 36000, 43200, 50400, 54600, 72000, 86400];
 const rarityColors = ["#bbb", "#0e0", "#02f", "#c3f", "#fb0", "#f00", "#6cf", "#306", "#0a8", "#222", "#a08", "#f88", "#070", "#f80", "#0ff", "#fff", "#afa", "#00f", "#987", "#b00"];
 const rarityNames = ["common", "uncommon", "rare", "epic", "legendary", "mythical", "celestial", "void", "life", "infinite", "eternal", "rainbow", "verdant", "inferno", "frutiger", "anti", "mint", "vaporwave", "dust", "finality"];
 const rarityChances = [524288, 262144, 131072, 65536, 32768, 16384, 8192, 4096, 2048, 1024, 512, 256, 128, 64, 32, 16, 8, 4, 2, 1];
