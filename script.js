@@ -402,5 +402,8 @@ function format(x,forceLargeFormat=false) {
 		let exponent = Math.floor(Math.log10(x))
 		return (Math.floor(x/(10**exponent)*100)/100).toFixed(2) + "e" + exponent
 	}
+        else if (x<10) {return (Math.round(x*100)/100).toString()}
+        else if (x<100) {return (Math.round(x*10)/10).toString()}
+
 	else {return Math.floor(x).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}
 }
