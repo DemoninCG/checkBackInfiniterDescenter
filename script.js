@@ -314,6 +314,12 @@ function openChest(x) {
   if (document.getElementById("potionListDiv").style.display == "inline-block") updatePotionListVisuals();
 }
 
+function openAllChests() {
+  for (let i=0;i<game.chestButtonsUnlocked;i++) {
+    openChest(i);
+  }
+}
+
 function updatePotionTypesDiscovered() {
   for (let i=0;i<game.bestPotionRarity;i++) {
     game.potionTypesDiscovered[i] = game.potions[i].filter(x => x > 0).length;
