@@ -112,6 +112,7 @@ function numberToTime(x) {
 }
 function numberToRomanNumerals(x) {
   if (x < 1) return "";
+  if (x > 5000) return "MMMMM+";
   let result = "";
   for (let [numeral, value] of romanNumerals) {
     while (x >= value) {
@@ -171,10 +172,10 @@ function updateVisuals() {
   let progressToNextLevel = Math.floor(game.XP - levelToXP(game.level));
   document.getElementById("XPToNextLevel").innerHTML = numberShort(progressToNextLevel) + "/" + numberShort(XPToNextLevel);
   document.getElementById("XPBarBack").style.width = Math.min(progressToNextLevel / XPToNextLevel * 100, 100) + "%";
-  document.getElementById("level").innerText = game.level;
+  document.getElementById("level").innerText = numberShort(game.level);
   document.getElementById("nextButtonLevel").innerText = XPButtonUnlockLevels[game.XPButtonsUnlocked];
   document.getElementById("nextChestLevel").innerText = chestButtonUnlockLevels[game.chestButtonsUnlocked];
-  document.getElementById("XPPotionMultiplier").innerText = numberShort(game.XPPotionMultiplier);
+  document.getElementById("XPPotionMultiplier").innerHTML = numberShort(game.XPPotionMultiplier);
   if (document.getElementById("optionsMenu").style.display == "inline-block") {
     document.getElementById("timePlayed").innerText = numberToTime(game.timePlayed);
     document.getElementById("potionsOpened").innerText = game.potionsOpened[0];
@@ -189,7 +190,7 @@ function updateVisuals() {
       document.getElementsByClassName("XPButton")[i].style.border = "4px solid #888";
     }
     else {
-      document.getElementsByClassName("XPButton")[i].innerText = "Gain " + numberShort(Math.floor(XPButtonGains[i] * game.XPPotionMultiplier)) + " XP";
+      document.getElementsByClassName("XPButton")[i].innerHTML = "Gain " + numberShort(Math.floor(XPButtonGains[i] * game.XPPotionMultiplier)) + " XP";
       document.getElementsByClassName("XPButton")[i].style.color = XPButtonColors[i % 12];
       document.getElementsByClassName("XPButton")[i].style.border = "4px solid " + XPButtonColors[i % 12];
     }
@@ -391,15 +392,15 @@ function openCloseOptionsMenu() {
 
 function numberShort(x) { //Will abreviate numbers to thousand, million, billion and then scientific notation, works for negative numbers
   if (typeof x === 'number' && !isNaN(x)) {
-xCeil = Math.ceil(x)
-exponent = Math.floor(Math.log10(Math.abs(xCeil))) //Makes sure the number is positive
-result = ""
-if (exponent >= 12) result = (xCeil / 10 ** exponent).toFixed(2) + "&nbsp;e" + exponent //For over 1t, scientific notation is used
-else if (exponent >= 9) result = (xCeil/10 ** 9).toFixed(1) + "&nbsp;B" //Billion (e9)
-else if (exponent >= 6) result = (xCeil/10 ** 6).toFixed(1) + "&nbsp;M" //Million (e6)
-else if (exponent >= 3) result = (xCeil/10 ** 3).toFixed(1) + "&nbsp;K" //Thousand (e3)
-else if (x < 1 && x > -1) result = (x).toFixed(3) //Uses 3 decimal places for -1 < x < 1
-else result = (x).toFixed(2) //2 Decimal places between 1 and 1k
-return result
+    xCeil = Math.ceil(x)
+    exponent = Math.floor(Math.log10(Math.abs(xCeil))) //Makes sure the number is positive
+    result = ""
+    if (exponent >= 12) result = (xCeil / 10 ** exponent).toFixed(2) + "e" + exponent //For over 1t, scientific notation is used
+    else if (exponent >= 9) result = (xCeil/10 ** 9).toFixed(1) + "&nbsp;B" //Billion (e9)
+    else if (exponent >= 6) result = (xCeil/10 ** 6).toFixed(1) + "&nbsp;M" //Million (e6)
+    else if (exponent >= 3) result = (xCeil/10 ** 3).toFixed(1) + "&nbsp;K" //Thousand (e3)
+    else if (x < 1 && x > -1) result = (x).toFixed(3) //Uses 3 decimal places for -1 < x < 1
+    else result = (x).toFixed(2) //2 Decimal places between 1 and 1k
+    return result
   }
 }
