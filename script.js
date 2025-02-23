@@ -382,10 +382,12 @@ function previousPotionListRarity() {
 }
 
 function displayPotionInfo(x) {
+  let rarityTotalWeight = 1048575
+  let shapeTotalWeight = 63.7
   let potionInfoTitleString = potionNames[x-1] + " <span style='color: " + rarityColors[potionListCurrentRarity] + "'>" + rarityNames[potionListCurrentRarity] + "</span> potion";
   potionInfoTitleString = potionInfoTitleString.charAt(0).toUpperCase() + potionInfoTitleString.slice(1); //Capitalize first letter
   document.getElementById("potionInfoTitle").innerHTML = potionInfoTitleString
-  document.getElementById("potionInfo").innerText = "You have " + (game.potions[potionListCurrentRarity][x-1] ? game.potions[potionListCurrentRarity][x-1] : 0);
+  document.getElementById("potionInfo").innerText = "You have " + (game.potions[potionListCurrentRarity][x-1] ? game.potions[potionListCurrentRarity][x-1] : 0) + "<br>Base rarity: 1/" + 1/((rarityChances[potionListCurrentRarity]/rarityTotalWeight) * (potionChances[x-1]/shapeTotalWeight));
 }
 
 function openCloseOptionsMenu() {
